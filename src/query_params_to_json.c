@@ -43,7 +43,7 @@ char *query_params_to_json(QUERY_PARAMS *params) {
 
 	/* How many minutes from the current time to start reading previous data records for. */
 	if(params->skip > 0)
-		json_object_object_add(json, "skip", json_object_new_int(params->minutes));
+		json_object_object_add(json, "skip", json_object_new_int(params->skip));
 
 	/* The time to query from */
 	if(params->fromTime != NULL)
