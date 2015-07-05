@@ -72,8 +72,8 @@ char *surehouse_client_query(SUREHOUSE_CLIENT *client, QUERY_PARAMS *params, cha
 			return NULL;
 	}
 
-	free(payload);
-	free(url);
+	free_pointer(payload);
+	free_pointer(url);
 
 	if(reauth) {
 		/*

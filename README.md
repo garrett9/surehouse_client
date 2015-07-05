@@ -76,18 +76,18 @@ The client provides two structures that assist in interacting with the SureHouse
 /* Initialize the client */
 SUREHOUSE_CLIENT *client = surehouse_client_init("API DOMAIN", "USERNAME", "PASSWORD");
 
+/* 
+ * In the event that the API does not yet have an SSL certificate signed by a trusted third party, you will have to call the following function in 
+ * in order to successfully make HTTP requests to the API.
+ */
+surehouse_client_ignore_ssl_warning(client);
+
 /* Make sure you then authenticate yourself with the API */
 if(!surehouse_client_authenticate(client)) {
 	/* Authentication failed, so close the client, and close the program through the "error" function. */
 	surehouse_client_close(client);
 	error("Failed to authenticate the client with the given credentials!");
 }
-	
-/* 
- * In the event that the API does not yet have an SSL certificate signed by a trusted third party, you will have to call the following function in 
- * in order to successfully make HTTP requests to the API.
- */
-surehouse_client_ignore_ssl_warning(client);
 ```
 Be sure to authenticate yourself with the API BEFORE making any HTTP requests. If you would like to, you can learn more about how authentication works  [here](#authentication). 
 
@@ -120,6 +120,7 @@ For querying data, there's two type of functions, or routes, to do so.
 	
 	```C
 	/* Initialize a QUERY_PARAMS structure. */
+	QUERY_PARAMS *params;
 	if((params = xquery_params_init("CT_SERVICE_L1", "CT_SERVICE_L2")) == NULL) {
 		/*
 		 * This would rarely happen, but the QUERY_PARAMS structure could not be initialized.
@@ -142,7 +143,7 @@ For querying data, there's two type of functions, or routes, to do so.
 	 * Make the HTTP request by using the SUREHOUSE_CLIENT, as well as your contructed QUERY_PARAMS.
 	 * The result would be a char pointer on success, or NULL on failure.
 	 */
-	payload = surehouse_client_custom(client, params);
+	char *payload = surehouse_client_custom(client, params);
 	```
 
 - **https://[domain]/Reporting/Recent**: This route offers slightly less functionality, but allows you to repeatedly query most recent data without having to manipulate dates on the client side. Below is an example on how you can send parameters to this route via POST.
@@ -176,6 +177,7 @@ For querying data, there's two type of functions, or routes, to do so.
 
 	```C
 	/* Initialize a QUERY_PARAMS structure. */
+	QUERY_PARAMS *params;
 	if((params = xquery_params_init("CT_SERVICE_L1", "CT_SERVICE_L2")) == NULL) {
 		/*
 		 * This would rarely happen, but the QUERY_PARAMS structure could not be initialized.
@@ -198,7 +200,7 @@ For querying data, there's two type of functions, or routes, to do so.
 	 * Make the HTTP request by using the SUREHOUSE_CLIENT, as well as your contructed QUERY_PARAMS.
 	 * The result would be a char pointer on success, or NULL on failure.
 	 */
-	payload = surehouse_client_recent(client, params);
+	char *payload = surehouse_client_recent(client, params);
 	```
 
 For a more in depth explanation of all of the available parameters for both routes, click [here](#parameters).

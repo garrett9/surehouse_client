@@ -70,6 +70,7 @@ int surehouse_client_authenticate(SUREHOUSE_CLIENT *client) {
 				if((token = (char *)json_object_get_string(json_object_object_get(payload, "auth_token"))) != NULL) {
 					ret = 1;
 					client->token = token;
+
 					/*
 					 * Now that we know we definately know we have the token, let's attach it to
 					 * the curl's headers. First, we allocate a buffer to store the header. The
@@ -84,16 +85,16 @@ int surehouse_client_authenticate(SUREHOUSE_CLIENT *client) {
 					client->headers = curl_slist_append(client->headers, authorization);
 				}
 			}
+
+			free_pointer(body);
+			free_pointer(payload);
 		}
 	}
 
 	/* Do some cleanup */
-	free(post);
-	free(body);
-	free(payload);
-	free(response.body);
-	free(url);
-	free(token);
+	free_pointer(post);
+	free_pointer(response.body);
+	free_pointer(url);
 
 	return ret;
 }
