@@ -120,6 +120,7 @@ For querying data, there's two type of functions, or routes, to do so.
 	
 	```C
 	/* Initialize a QUERY_PARAMS structure. */
+	QUERY_PARAMS *params;
 	if((params = xquery_params_init("CT_SERVICE_L1", "CT_SERVICE_L2")) == NULL) {
 		/*
 		 * This would rarely happen, but the QUERY_PARAMS structure could not be initialized.
@@ -176,6 +177,7 @@ For querying data, there's two type of functions, or routes, to do so.
 
 	```C
 	/* Initialize a QUERY_PARAMS structure. */
+	QUERY_PARAMS *params;
 	if((params = xquery_params_init("CT_SERVICE_L1", "CT_SERVICE_L2")) == NULL) {
 		/*
 		 * This would rarely happen, but the QUERY_PARAMS structure could not be initialized.
