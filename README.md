@@ -143,7 +143,7 @@ For querying data, there's two type of functions, or routes, to do so.
 	 * Make the HTTP request by using the SUREHOUSE_CLIENT, as well as your contructed QUERY_PARAMS.
 	 * The result would be a char pointer on success, or NULL on failure.
 	 */
-	payload = surehouse_client_custom(client, params);
+	char *payload = surehouse_client_custom(client, params);
 	```
 
 - **https://[domain]/Reporting/Recent**: This route offers slightly less functionality, but allows you to repeatedly query most recent data without having to manipulate dates on the client side. Below is an example on how you can send parameters to this route via POST.
@@ -200,7 +200,7 @@ For querying data, there's two type of functions, or routes, to do so.
 	 * Make the HTTP request by using the SUREHOUSE_CLIENT, as well as your contructed QUERY_PARAMS.
 	 * The result would be a char pointer on success, or NULL on failure.
 	 */
-	payload = surehouse_client_recent(client, params);
+	char *payload = surehouse_client_recent(client, params);
 	```
 
 For a more in depth explanation of all of the available parameters for both routes, click [here](#parameters).
