@@ -76,18 +76,18 @@ The client provides two structures that assist in interacting with the SureHouse
 /* Initialize the client */
 SUREHOUSE_CLIENT *client = surehouse_client_init("API DOMAIN", "USERNAME", "PASSWORD");
 
+/* 
+ * In the event that the API does not yet have an SSL certificate signed by a trusted third party, you will have to call the following function in 
+ * in order to successfully make HTTP requests to the API.
+ */
+surehouse_client_ignore_ssl_warning(client);
+
 /* Make sure you then authenticate yourself with the API */
 if(!surehouse_client_authenticate(client)) {
 	/* Authentication failed, so close the client, and close the program through the "error" function. */
 	surehouse_client_close(client);
 	error("Failed to authenticate the client with the given credentials!");
 }
-	
-/* 
- * In the event that the API does not yet have an SSL certificate signed by a trusted third party, you will have to call the following function in 
- * in order to successfully make HTTP requests to the API.
- */
-surehouse_client_ignore_ssl_warning(client);
 ```
 Be sure to authenticate yourself with the API BEFORE making any HTTP requests. If you would like to, you can learn more about how authentication works  [here](#authentication). 
 
