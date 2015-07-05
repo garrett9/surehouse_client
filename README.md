@@ -360,7 +360,7 @@ SUREHOUSE_CLIENT *client = surehouse_client_init("API DOMAIN", "USERNAME", "PASS
 /* Print out all data sent to the server to the command line. */
 surehouse_client_debug_send(client);
 /* Print out all data sent from the server to the command line. */
-surehouse_client_debug_recieve(client);
+surehouse_client_debug_receive(client);
 ```
 
 # Authentication
@@ -370,7 +370,7 @@ Authentication to the system is handled through JSON (JWT) web tokens. You can t
 - **401**: A 401 HTTP response, otherwise known as **Unauthorized** indicates that either a JWT was not provided, or the one sent was not valid.
 - **419**: A 419 HTTP response, otherwise know as **Authentication Timeout**, indicates that a JWT was provided, but it has expired.
 
-A 401 response can also be recieved when a user attempts to send their credentials to the server to get a JWT, and the credentials are incorrect. In order to authenticate yourself with the SureHouse server, you must run the following commands before making any queries for the data.
+A 401 response can also be received when a user attempts to send their credentials to the server to get a JWT, and the credentials are incorrect. In order to authenticate yourself with the SureHouse server, you must run the following commands before making any queries for the data.
 
 ```C
 SUREHOUSE_CLIENT *client = surehouse_client_init("API DOMAIN", "USERNAME", "PASSWORD");
@@ -476,7 +476,7 @@ The only difference is that there is no **Time** field in the response since the
     "message": "The \"sensors\" field is a required array of sensors to query!"
 }
 ```
-For the above example, no sensors were provided to query, thus triggering the 400 HTTP response, otherwise known as a Bad Request. You can experience a similar error if you were to query a sensor that did not exist in the system. However, if a response greater than or equal to 400 is recieved by the client from the server, then a NULL string will be returned as specified earlier under the [Usage](#usage) section.
+For the above example, no sensors were provided to query, thus triggering the 400 HTTP response, otherwise known as a Bad Request. You can experience a similar error if you were to query a sensor that did not exist in the system. However, if a response greater than or equal to 400 is received by the client from the server, then a NULL string will be returned as specified earlier under the [Usage](#usage) section.
 
 # Tools
 

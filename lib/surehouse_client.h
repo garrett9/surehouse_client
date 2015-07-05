@@ -133,7 +133,7 @@ char *surehouse_client_recent(SUREHOUSE_CLIENT *, QUERY_PARAMS *);
 char *surehouse_client_query(SUREHOUSE_CLIENT *, QUERY_PARAMS *, char *);
 void surehouse_client_ignore_ssl_warning(SUREHOUSE_CLIENT *);
 void surehouse_client_debug_send(SUREHOUSE_CLIENT *);
-void surehouse_client_debug_recieve(SUREHOUSE_CLIENT *);
+void surehouse_client_debug_receive(SUREHOUSE_CLIENT *);
 void surehouse_client_close(SUREHOUSE_CLIENT *);
 
 /*
