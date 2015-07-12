@@ -250,7 +250,7 @@ The client offers a number of different parameters for making complex queries. B
 - **Usage**
 
 	```C
-	query_params_set_from(params, "2015-07-02", NULL);
+	query_params_set_from(params, "2015-07-02", "13:00");
 	```
 
 #### toDate
