@@ -7,7 +7,8 @@ LIB=../lib/libsurehouse_client.a
 OBJ=$(SRC:.c=.o)
 RM=rm -f
 
-all: $(OBJ)
+all:
+	gcc -c $(SRC)
 
 lib: all
 	ar rc $(LIB) $(OBJ)
